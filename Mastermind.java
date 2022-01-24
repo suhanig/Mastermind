@@ -22,8 +22,9 @@ public class Mastermind {
 			
 		
 		
-			for (int x = 0; x < 20; x+=2) {
+			for (int x = 0; x < 20; x+=2) { //for loop to repeat the board to have 20 rows in total for 10 total guesses
 			board.add(new ArrayList<String>());  //board<list1, list2...>    board.get(0)  //'append'
+			//introducing the guessing board
 			board.get(x).add(" "); 
 			board.get(x).add(" "); 		
 			board.get(x).add(" "); 
@@ -34,6 +35,7 @@ public class Mastermind {
 			board.get(x).add(" ");
 			board.add(new ArrayList<String>()); //create arraylist 4 second row
 			//x++; 
+			//introuding scoring row
 			board.get(x+1).add("-"); 
 			board.get(x+1).add("-"); 		
 			board.get(x+1).add("-"); 
@@ -118,9 +120,9 @@ public class Mastermind {
 	//method to add test guess to board?
 	public void addGuess (char[] arrChar, int turns) {  // ['R', 'B', 'Y', 'G' ]
 		
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) { //for loop for each row
 			//iterate thru each element in the [] arrchar
-			board.get(turns).set(i, String.valueOf(arrChar[i]) );
+			board.get(turns).set(i, String.valueOf(arrChar[i]) ); 
 			//put each letter into the arrayList
 		}
 		
@@ -135,7 +137,7 @@ public class Mastermind {
 	
 	System.out.println(" Guesses \t Scores");
 	
-	for (int p=0; p<20; p++) {
+	for (int p=0; p<20; p++) { //print board of 20 rows
 	System.out.println(board.get(p));
 	}
 	/*System.out.println(board.get(1));
