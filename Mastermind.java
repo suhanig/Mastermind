@@ -151,5 +151,45 @@ public class Mastermind {
 	
 	}
 	
+	public void secretCode {
+		
+		int random = (int) (Math.random() * 7);
+		String [] arr = { "R", "Y", "G", "B", "O", "P" };
+		String firstPos = arr [random];
+		random = (int) (Math.random() * 6);
+		String secondPos = arr [random];
+		
+		//all while loops belo are ensuring that there are no repeats
+			while (firstPos.equals(secondPos)) {
+				
+				random = (int) (Math.random() * 6);
+				secondPos = arr[random];
+				
+			}
+		random = (int) (Math.random() * 6);
+		String thirdPos = arr[random};
+			while (firstPos.equals(thirdPos) || secondPos.equals(thirdPos) {
+				
+				random = (int) (Math.random() * 6);
+				thirdPos = arr[random];
+				
+			}
+		random = (int) (Math.random() * 6);
+		String fourthPos = arr[random];
+		
+			while (firstPos.equals(fourthPos) || secondPos.equals(fourthPos) || thirdPos.equals(fourthPos) ) {
+				
+				random = (int) (Math.random() * 6);
+				fourthPos = arr[random];
+			}
+			
+		System.out.println(firstPos + secondPos + thirdPos + fourthPos
+		
+	} // closes secretCode. CALL ON IN TESTER CLASS
+				
+		
+		
+		
+	
 
 }
