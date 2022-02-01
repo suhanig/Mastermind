@@ -12,8 +12,16 @@
 //class: board, game, player
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Mastermind {
+	
+	private String firstPos;
+	private String secondPos;
+	private String thirdPos;
+	private String fourthPos;
+	int n = 1;
 	
 	//declare memory spot
 	ArrayList<ArrayList<String>> board = new ArrayList<ArrayList<String>> (); //creates placeholder in memory
@@ -46,74 +54,7 @@ public class Mastermind {
 			board.get(x+1).add(" ");
 			
 			
-		} //closes for loop
-			/*board.get(2).add(" "); 
-			board.get(2).add(" "); 		
-			board.get(2).add(" "); 
-			board.get(2).add(" ");
-			//now scoring
-			board.get(2).add("="); 
-			board.get(2).add(" "); 
-			board.get(2).add(" ");
-			board.add(new ArrayList<String>()); //create arraylist 4 second row
-			board.get(3).add("-"); 
-			board.get(3).add("-"); 		
-			board.get(3).add("-"); 
-			board.get(3).add("-");
-			//now scoring
-			board.get(3).add("="); 
-			board.get(3).add(" "); 
-			board.get(3).add(" ");board.get(0).add(" "); 
-			board.get(4).add(" "); 		
-			board.get(4).add(" "); 
-			board.get(4).add(" ");
-			//now scoring
-			board.get(4).add("="); 
-			board.get(4).add(" "); 
-			board.get(4).add(" ");
-			board.add(new ArrayList<String>()); //create arraylist 4 second row
-			board.get(5).add("-"); 
-			board.get(5).add("-"); 		
-			board.get(5).add("-"); 
-			board.get(5).add("-");
-			//now scoring
-			board.get(5).add("="); 
-			board.get(5).add(" "); 
-			board.get(5).add(" ");
-			board.get(6).add(" "); 
-			board.get(6).add(" "); 		
-			board.get(6).add(" "); 
-			board.get(6).add(" ");
-			//now scoring
-			board.get(6).add("="); 
-			board.get(6).add(" "); 
-			board.get(6).add(" ");
-			board.add(new ArrayList<String>()); //create arraylist 4 second row
-			board.get(7).add("-"); 
-			board.get(7).add("-"); 		
-			board.get(7).add("-"); 
-			board.get(7).add("-");
-			//now scoring
-			board.get(7).add("="); 
-			board.get(7).add(" "); 
-			board.get(7).add(" ");
-			board.get(8).add(" "); 
-			board.get(8).add(" "); 		
-			board.get(8).add(" "); 
-			board.get(8).add(" ");
-			//now scoring
-			board.get(8).add("="); 
-			board.get(8).add(" "); 
-			board.get(8).add(" ");
-			board.add(new ArrayList<String>()); //create arraylist 4 second row
-			board.get(9).add("-"); 
-			board.get(9).add("-"); 		
-			board.get(9).add("-"); 
-			board.get(9).add("-");
-			//now scoring
-			board.get(9).add("="); 
-			board.get(9).add(" "); 
-			board.get(9).add(" "); */
+		} 
 		
 	}
 	
@@ -151,13 +92,13 @@ public class Mastermind {
 	
 	}
 	
-	public void secretCode {
+	public void secretCode () { //has computer generate random secret code for player to be guessing
 		
 		int random = (int) (Math.random() * 7);
 		String [] arr = { "R", "Y", "G", "B", "O", "P" };
-		String firstPos = arr [random];
+		firstPos = arr [random];
 		random = (int) (Math.random() * 6);
-		String secondPos = arr [random];
+		secondPos = arr [random];
 		
 		//all while loops belo are ensuring that there are no repeats
 			while (firstPos.equals(secondPos)) {
@@ -167,15 +108,15 @@ public class Mastermind {
 				
 			}
 		random = (int) (Math.random() * 6);
-		String thirdPos = arr[random};
-			while (firstPos.equals(thirdPos) || secondPos.equals(thirdPos) {
+		thirdPos = arr[random];
+			while (firstPos.equals(thirdPos) || secondPos.equals(thirdPos) ) {
 				
 				random = (int) (Math.random() * 6);
 				thirdPos = arr[random];
 				
 			}
 		random = (int) (Math.random() * 6);
-		String fourthPos = arr[random];
+		fourthPos = arr[random];
 		
 			while (firstPos.equals(fourthPos) || secondPos.equals(fourthPos) || thirdPos.equals(fourthPos) ) {
 				
@@ -183,13 +124,108 @@ public class Mastermind {
 				fourthPos = arr[random];
 			}
 			
-		System.out.println(firstPos + secondPos + thirdPos + fourthPos
+		System.out.println(firstPos + secondPos + thirdPos + fourthPos);
 		
-	} // closes secretCode. CALL ON IN TESTER CLASS
+	} // closes secretCode
+	
+	
+	
+	public void userGuess () { //code for taking in user input and comparing it to the computer's generated secret code 
+		
+		
+		Scanner scan = new Scanner (System.in);
+		
+		int guesses = 0; 
+		
+		for (int y = 0; y < 20; y+=2) {
+			
+			guesses = guesses + 1;
+			
+			System.out.println("Welcome to Mastermind. Please enter your guess by using letters for the colors. 'B' for blue, 'R' for red, 'Y' for yellow, 'G' for green, 'O' for orange, and 'P' for purple.");
+			
+			System.out.println("Enter letter for your guess: ");
+			String letterOne = scan.nextLine();
+			
+			System.out.println("Enter letter for your guess: ");
+			String letterTwo = scan.nextLine();
+			
+			System.out.println("Enter letter for your guess: ");
+			String letterThree = scan.nextLine();
+			
+			System.out.println("Enter letter for your guess: ");
+			String letterFour = scan.nextLine();
+			
+			board.get(y).set(0, letterOne);
+			board.get(y).set(1, letterTwo);
+			board.get(y).set(2, letterThree);
+			board.get(y).set(3, letterFour);
+			
+			String black = "bl"; //if user guesses right color in right location
+			String white = "wh"; //if user guesses right color in wrong location
+			
+			int gameOverWin = 0;
+			
+			//checking to see if any of the user input is the right color. will give a white pin
+			
+			if (board.get(y).get(0).equals(firstPos) || board.get(y).get(0).equals(secondPos) || board.get(y).get(0).equals(thirdPos) || board.get(y).get(0).equals(fourthPos) ) {
+				board.get(y+1).set(5, white);
+			}
+			
+			if (board.get(y).get(1).equals(firstPos) || board.get(y).get(1).equals(secondPos) || board.get(y).get(1).equals(thirdPos) || board.get(y).get(1).equals(fourthPos) ) {
+				board.get(y).set(6, white);
+			}
+
+			if (board.get(y).get(2).equals(firstPos) || board.get(y).get(2).equals(secondPos) || board.get(y).get(2).equals(thirdPos) || board.get(y).get(2).equals(fourthPos) ) {
+				board.get(y).set(5, white);
+			}
+			
+			if (board.get(y).get(3).equals(firstPos) || board.get(y).get(3).equals(secondPos) || board.get(y).get(3).equals(thirdPos) || board.get(y).get(3).equals(fourthPos) ) {
+				board.get(y+1).set(6, white);
+			}
+			
+			//checking if user input is right color but also in the right LOCATION
+			
+			if (board.get(y).get(0).equals(firstPos)) {
+				board.get(y+1).set(5, black);
+				gameOverWin = gameOverWin + 1;
+			}
+			
+			if (board.get(y).get(1).equals(secondPos)) {
+				board.get(y).set(6, black);
+				gameOverWin = gameOverWin + 1;
+			}
+			if (board.get(y).get(2).equals(thirdPos)) {
+				board.get(y).set(5, black);
+				gameOverWin = gameOverWin + 1;
+			}
+			if (board.get(y).get(3).equals(fourthPos)) {
+				board.get(y+1).set(6, black);
+				gameOverWin = gameOverWin + 1;
+			}
+			
+			for (int m=0; m<n; m++) {
+				System.out.println(board.get(m));
+				System.out.println(board.get(m+1));
+				
+			}
+			n = n + 2;
+			 
+			 if (gameOverWin == 4) {
+				 y = 20;
+			}
+			
+	}
+	
+			
+			
+			
+			
+			
+			
+		
 				
 		
 		
-		
-	
+}
 
 }
