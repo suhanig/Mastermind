@@ -27,6 +27,14 @@ public class Mastermind { //main MASTERMIND header. where all the code is for th
 	ArrayList<ArrayList<String>> board = new ArrayList<ArrayList<String>> (); //creates placeholder in memory
 	
 	public void buildBoard () {//builds board. sets up the array
+		
+		/** the build board method:
+		/* In this method, I am arranging the array that will be used to have the user's
+		 guesses and the scoring of these guesses. I did so using an array list and putting
+		 it into a for loop. However, I did not want my format of the array list to have all 
+		 the guesses and scores on the same line, so I had sure that each guess consisted of 
+		 2 lines. This way the scoring can be seperated over two lines.
+		 */
 			
 		
 			for (int x = 0; x < 20; x+=2) { //for loop to repeat the board to have 20 rows in total for 10 total guesses
@@ -51,6 +59,7 @@ public class Mastermind { //main MASTERMIND header. where all the code is for th
 			board.get(x+1).add("="); 
 			board.get(x+1).add(" "); 
 			board.get(x+1).add(" ");
+			
 			
 			
 		} 
@@ -95,6 +104,13 @@ public class Mastermind { //main MASTERMIND header. where all the code is for th
 	} */ 
 	
 	public void rules () { //rules method to print out the rule of Mastermind
+		
+		/** the rules method:
+		/* This method only consists of my displaying of the rules. I made 
+		 sure to go in depth with the rules. I entered in the rules using 
+		 multiple print statments and made sure to properly line them up.
+		 */
+		 
 		System.out.println("Welcome to Mastermind! In this game, the computer will generate a random sequence of four colors");
 		System.out.println("The objective of this game is to guess this randomized, secret code");
 		System.out.println("When prompted, you may guess a color one at a time");
@@ -102,11 +118,20 @@ public class Mastermind { //main MASTERMIND header. where all the code is for th
 		System.out.println("G' for green, 'O' for orange, and 'P' for purple");
 		System.out.println("If a color you guess is a color in the secret code, but is in the wrong position, you will recieve a 'wh' (white) pin");
 		System.out.println("If a color you guess is a color in the secret code, and is in the right position, you will recieve a 'bl' (black) pin");
-		System.out.println("You may NOT repeat colors in your guess. The secret code has NO repeats of colors.");
+		System.out.println("You may NOT repeat colors in your guess. Use all caps for the color letter! The secret code has NO repeats of colors.");
 		System.out.println("You will get 10 guesses for the secret code. Good luck!");
 	}
 	
 	public void secretCode () { //has computer generate random secret code for player to be guessing
+		
+		
+		/** generating a randomized code- secret code method:
+		/* This method was a struggle for me. In this, I had to make sure the 
+		 computer would generate a random number from an aray holding 6 letters
+		 (meaning positions 0-5). I also had to make sure that the computer
+		 would not generate any repeats that it would then put into the secret
+		 code. This method randomly generates the computer's secret code.
+		 */
 		
 		
 		int random = (int) (Math.random() * 6); //setting up the idea that there are 6 colors and the computer will have to generate a random copde using those 6
@@ -146,6 +171,17 @@ public class Mastermind { //main MASTERMIND header. where all the code is for th
 	
 	
 	public void userGuess () { //code for taking in user input and comparing it to the computer's generated secret code 
+		
+		
+		/** the user guess method:
+		/*This method was challenging as well. In this method, I am taking
+		 in the user's input. Then, I am comparing it to the randomized
+		 generated computer code and seeing which pins the user's guess
+		 shpuld recieve. After determing that, I am setting a black or 
+		 white pin in the scoring area. In this method, I am also 
+		 stopping the game if the user has guessed the code in less than 
+		 10 guesses.
+		 */
 		
 		
 		Scanner scan = new Scanner (System.in); //introducing scanner called scan
