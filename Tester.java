@@ -39,5 +39,11 @@ public class Tester { //responsible for exectutioning the code written in the Ma
 		}
 	} //close psvm
 	
-
+	
+	
+	//THNGS LEFT TO DO:
+		//hide secret code. it shouldnt print out
+		//make sure rules are clear enough
+		//readMe file
+		//go throigh checklist/requirments on schoology
 	
